@@ -8,13 +8,13 @@ class DonHangAD extends Controller
 
     public function __construct()
     {
-        $this->DonHangModel = $this->Model("DonHangADModel");
+        $this->DonHangModel = $this->Model("DonHangModel");
        
     }
 
     public function Show()
     {
-        $data = $this->DonHangModel->showDonHang();
+        $data = $this->DonHangModel->showOrder();
         $this->View("aoxau", [
             "page" => "qldonhang",
             "show" => $data
@@ -68,8 +68,8 @@ class DonHangAD extends Controller
 
     }
     
-    public function deleteOrder($id){
-        $data = $this->DonHangModel->delete($id);
+    public function delete($id){
+        $data = $this->DonHangModel->deleteOrder($id);
         if ($data) {
             // Hiển thị thông báo thành công và quay lại trang quản lý sách
             echo "<script>alert('Xóa thành công!');</script>";
@@ -79,6 +79,8 @@ class DonHangAD extends Controller
             echo "<script>alert('Xóa sách thất bại!');</script>";
         }
     }
+
+
 
 
 

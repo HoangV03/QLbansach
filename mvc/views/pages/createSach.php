@@ -19,8 +19,26 @@
                 <input type="text" class="form-control" id="MaSach" name="MaSach" required>
             </div>
             <div class="mb-3">
+                <label for="MaKho" class="form-label">Mã Kho</label>
+                <select class="form-control" id="MaKho" name="MaKho" required>
+                    <?php
+                    // Lấy danh sách danh mục từ cơ sở dữ liệu
+                    $khoList = json_decode($data['kho'], true);
+
+                    // Hiển thị các danh mục (TenDanhMuc) trong form
+                    foreach ($khoList as $kho) {
+                        echo "<option value='" . htmlspecialchars($kho['MaKho']) . "'>" . htmlspecialchars($kho['MaKho']) . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="TenSach" class="form-label">Tên Sách</label>
                 <input type="text" class="form-control" id="TenSach" name="TenSach" required>
+            </div>
+            <div class="mb-3">
+                <label for="TacGia" class="form-label">Tác Giả</label>
+                <input type="text" class="form-control" id="TacGia" name="TacGia" required>
             </div>
             <div class="mb-3">
                 <label for="Gia" class="form-label">Giá (VND)</label>

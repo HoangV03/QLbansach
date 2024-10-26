@@ -36,6 +36,12 @@
             <button type="submit" class="btn btn-primary">Tìm kiếm</button>
         </form>
 
+         <!-- Nút xuất Excel trong view quản lý sách -->
+         <div class="text-end mb-3">
+         <a href='' onclick="xuatexcel()" title='Thêm' class='btn btn-primary'>
+         Xuất Excel</a>
+    </div>
+
         <!-- Hiển thị bảng dữ liệu -->
         <table class="table table-bordered table-striped mt-4">
             <thead class="table-dark">
@@ -51,7 +57,7 @@
                     <th>Chức Năng</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="donhangTableBody">
                 <?php
                 // Giải mã dữ liệu JSON
                 $data = json_decode($data["show"], true);
@@ -98,3 +104,47 @@
 </body>
 
 </html>
+
+<!-- Sử dụng CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script type="text/javascript">
+    function xuatexcel() {
+        var name = prompt("Nhập tên file của bạn", "Tên");
+        exportData(name, '.xlsx');
+
+    }
+
+    function exportData(name, type) {
+        // Lấy bảng customers
+        const table = document.getElementById("donhangTableBody");
+
+        // Loại bỏ cột cuối cùng của bảng
+        const rows = table.getElementsByTagName("tr");
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            if (row.cells.length > 0) {
+                row.deleteCell(row.cells.length - 1); // Loại bỏ ô cuối cùng
+            }
+        }
+        // Loại bỏ cột thứ 4, 5 và cột cuối cùng của bảng
+        // const rows = table.getElementsByTagName("tr");
+        // for (let i = 0; i < rows.length; i++) {
+        //     const row = rows[i];
+        //     if (row.cells.length >= 5) {
+        //         row.deleteCell(4); // Loại bỏ cột 5
+        //         row.deleteCell(3); // Loại bỏ cột  4
+        //     }
+        //     if (row.cells.length > 0) {
+        //         row.deleteCell(row.cells.length - 1); // Loại bỏ cột cuối cùng
+        //     }
+        // }
+
+        // Xuất bảng sang Excel
+        const fileName = name + type;
+        const wb = XLSX.utils.table_to_book(table);
+        XLSX.writeFile(wb, fileName);
+    }
+</script>
+
+<script src="live/lib/js/sheet.js"></script>
+

@@ -2,12 +2,14 @@
 class Sach extends Controller
 {
     public $SachModel;
-    public $DanhMucModel;
+    public $DanhMucModelAD;
+    public $KhoModel;
 
     public function __construct()
     {
         $this->SachModel = $this->Model("SachModel");
-        $this->DanhMucModel = $this->Model("DanhMucModel");
+        $this->DanhMucModelAD = $this->Model("DanhMucModelAD");
+        $this->KhoModel = $this->Model("KhoModel");
     }
 
     public function Sayhi()
@@ -31,10 +33,12 @@ class Sach extends Controller
 
     public function FormCreate()
     {
-        
+        $data = $this->DanhMucModelAD->showDanhMuc();
+        $data1 = $this->KhoModel->showKho();
         $this->View("aoxau", [
             "page" => "createSach",
-            
+            "danhmuc" => $data,
+            "kho" => $data1
         ]);
     }
 
@@ -42,7 +46,9 @@ class Sach extends Controller
 {
     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['btnsubmit'])) {
         $MaSach = $_POST['MaSach'];
+        $MaKho = $_POST['MaKho'];
         $TenSach = $_POST['TenSach'];
+        $TacGia = $_POST['TacGia'];
         $Gia = $_POST['Gia'];
         $SoLuong = $_POST['SoLuong'];
         $MaDanhMuc = $_POST['MaDanhMuc'];
@@ -61,7 +67,7 @@ class Sach extends Controller
         }
 
         // Gọi model để thêm sách vào CSDL
-        $result = $this->SachModel->createSach($MaSach, $TenSach, $Gia, $SoLuong, $MaDanhMuc, $Anh, $MoTa);
+        $result = $this->SachModel->createSach($MaSach, $MaKho, $TenSach, $TacGia, $Gia, $SoLuong, $MaDanhMuc, $Anh, $MoTa);
 
         if ($result) {
             // Hiển thị thông báo thành công và quay lại trang quản lý sách
@@ -79,7 +85,9 @@ public function update()
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Lấy dữ liệu từ form
         $maSach = $_POST['maSach'];
+        $maKho = $_POST['maKho'];
         $tenSach = $_POST['tenSach'];
+        $tacGia = $_POST['tacGia'];
         $giaSach = $_POST['giaSach'];
         $soLuong = $_POST['soLuong'];
         $moTa = $_POST['moTa'];
@@ -103,7 +111,7 @@ public function update()
         }
 
         // Gọi model để cập nhật sản phẩm
-        $result = $this->SachModel->updateSach($maSach, $tenSach, $giaSach, $soLuong, $hinhAnh, $moTa, $maDanhMuc);
+        $result = $this->SachModel->updateSach($maSach, $maKho, $tenSach, $tacGia, $giaSach, $soLuong, $hinhAnh, $moTa, $maDanhMuc);
 
         if ($result) {
             // Hiển thị thông báo thành công và quay lại trang quản lý sách
@@ -144,6 +152,7 @@ public function update()
     {
         // Lấy thông tin sách theo ID
         $data = $this->SachModel->getSach($id);
+        // $data1 = $this->NhapKhoModel->getNhapKho($id);
        // Lấy danh sách danh mục
     //    $danhmucList = $this->DanhMucModel->getDanhMuc($id); 
     
@@ -151,6 +160,7 @@ public function update()
         $this->view("aoxau", [
             "page" => "updateSach",
             "sach" => $data,
+            // "kho1" =>$data1
             // "danhmucList" => $danhmucList
         ]);
     }

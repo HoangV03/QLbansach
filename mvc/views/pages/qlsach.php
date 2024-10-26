@@ -28,15 +28,17 @@
 
          <!-- Nút xuất Excel trong view quản lý sách -->
          <div class="text-end mb-3">
-            <a href="http://localhost/PHP-MVC-MASTER/Sach/exportExcel" class="btn btn-primary">Xuất Excel</a>
-        </div>
+         <a href='' onclick="xuatexcel()" title='Thêm' class='btn btn-primary'>
+         Xuất Excel</a>
     </div>
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
                     <th>Mã Sách</th>
+                    <th>Mã Kho</th>
                     <th>Tên Sách</th>
+                    <th>Tác Giả</th>
                     <th>Giá (VND)</th>
                     <th>Số Lượng</th>
                     <th>Hình Ảnh</th>
@@ -55,7 +57,9 @@
                     foreach ($sachs as $item) {
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($item['MaSach']) . "</td>";
+                        echo "<td>" . htmlspecialchars($item['MaKho']) . "</td>";
                         echo "<td>" . htmlspecialchars($item['TenSach']) . "</td>";
+                        echo "<td>" . htmlspecialchars($item['TacGia']) . "</td>";
                         echo "<td>" . htmlspecialchars($item['Gia']) . " VND</td>";
                         echo "<td>" . htmlspecialchars($item['SoLuong']) . "</td>";
                         echo "<td><img src='/php-mvc-master/public/image/" . htmlspecialchars($item['Anh']) . "' width='50'></td>";
@@ -94,3 +98,48 @@
 </body>
 
 </html>
+
+
+
+<!-- Sử dụng CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script type="text/javascript">
+    function xuatexcel() {
+        var name = prompt("Nhập tên file của bạn", "Tên");
+        exportData(name, '.xlsx');
+
+    }
+
+    function exportData(name, type) {
+        // Lấy bảng customers
+        const table = document.getElementById("sachTableBody");
+
+        // Loại bỏ cột cuối cùng của bảng
+        const rows = table.getElementsByTagName("tr");
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            if (row.cells.length > 0) {
+                row.deleteCell(row.cells.length - 1); // Loại bỏ ô cuối cùng
+            }
+        }
+        // Loại bỏ cột thứ 4, 5 và cột cuối cùng của bảng
+        // const rows = table.getElementsByTagName("tr");
+        // for (let i = 0; i < rows.length; i++) {
+        //     const row = rows[i];
+        //     if (row.cells.length >= 5) {
+        //         row.deleteCell(4); // Loại bỏ cột 5
+        //         row.deleteCell(3); // Loại bỏ cột  4
+        //     }
+        //     if (row.cells.length > 0) {
+        //         row.deleteCell(row.cells.length - 1); // Loại bỏ cột cuối cùng
+        //     }
+        // }
+
+        // Xuất bảng sang Excel
+        const fileName = name + type;
+        const wb = XLSX.utils.table_to_book(table);
+        XLSX.writeFile(wb, fileName);
+    }
+</script>
+
+<script src="live/lib/js/sheet.js"></script>

@@ -12,10 +12,10 @@ class SachModel extends DB
         return json_encode($mang);
     }
 
-    public function createSach($MaSach, $TenSach, $Gia, $SoLuong, $MaDanhMuc, $Anh, $MoTa)
+    public function createSach($MaSach, $MaKho, $TenSach, $TacGia, $Gia, $SoLuong, $MaDanhMuc, $Anh, $MoTa)
 {
-    $sql = "INSERT INTO tbl_sach (MaSach, TenSach, Gia, SoLuong, MaDanhMuc, Anh, MoTa) 
-            VALUES ('$MaSach', '$TenSach', '$Gia', '$SoLuong', '$MaDanhMuc', '$Anh', '$MoTa')";
+    $sql = "INSERT INTO tbl_sach (MaSach, MaKho, TenSach, TacGia, Gia, SoLuong, MaDanhMuc, Anh, MoTa) 
+            VALUES ('$MaSach', $MaKho, '$TenSach', '$TacGia', '$Gia', '$SoLuong', '$MaDanhMuc', '$Anh', '$MoTa')";
     $result = false;
     if (mysqli_query($this->con, $sql)) {
         $result = true;
@@ -26,11 +26,12 @@ class SachModel extends DB
 }
     
 
-    public function updateSach($maSach, $tenSach, $giaSach, $soLuong, $hinhAnh, $moTa)
+    public function updateSach($maSach, $MaKho, $tenSach, $tacGia, $giaSach, $soLuong, $hinhAnh, $moTa, $maDanhMuc)
 {
     $sql = "UPDATE tbl_sach 
-        SET TenSach = '$tenSach', Gia = '$giaSach', SoLuong = '$soLuong', Anh = '$hinhAnh', MoTa = '$moTa' 
-        WHERE MaSach = '$maSach'";
+        SET TenSach = '$tenSach', TacGia = '$tacGia', Gia = '$giaSach', SoLuong = '$soLuong', Anh = '$hinhAnh', MoTa = '$moTa',
+        MaDanhMuc = '$maDanhMuc' 
+        WHERE MaSach = '$maSach' and MaKho = '$MaKho'";
 
     $result = false;
         if (mysqli_query($this->con, $sql)) {

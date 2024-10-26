@@ -16,7 +16,9 @@
     // $danhmucList = json_decode($data["danhmucList"], true); // Lấy danh sách danh mục
     foreach ($data as $row) {
         $maSach = $row["MaSach"];
+        $maKho = $row["MaKho"];
         $tenSach = $row["TenSach"];
+        $tacGia = $row["TacGia"];
         $giaSach = $row["Gia"];
         $soLuong = $row["SoLuong"];
         $hinhAnh = $row["Anh"];
@@ -32,8 +34,16 @@
                 <input type="text" class="form-control" name="maSach" value="<?php echo $maSach ?>" readonly>
             </div>
             <div class="mb-3">
+                <label for="maKho" class="form-label">Mã Kho</label>
+                <input type="text" class="form-control" name="maKho" value="<?php echo $maKho ?>" readonly>
+            </div>
+            <div class="mb-3">
                 <label for="tenSach" class="form-label">Tên Sách</label>
                 <input type="text" class="form-control" name="tenSach" value="<?php echo $tenSach ?>" placeholder="Nhập tên sách">
+            </div>
+            <div class="mb-3">
+                <label for="tacGia" class="form-label">Tác Giả</label>
+                <input type="text" class="form-control" name="tacGia" value="<?php echo $tacGia ?>" placeholder="Nhập tên tác giả">
             </div>
             <div class="mb-3">
                 <label for="giaSach" class="form-label">Giá Sách</label>
@@ -53,7 +63,7 @@
             </div>
             <div class="mb-3">
                 <label for="maDanhMuc" class="form-label">Danh Mục</label>
-                <input type="text" class="form-control" name="maDanhMuc" value="<?php echo $maDanhMuc ?>" readonly>
+                <input type="text" class="form-control" name="maDanhMuc" value="<?php echo $maDanhMuc ?>" placeholder="Nhập danhmucj">
             </div>
 
             <!-- Nút sửa sản phẩm -->
