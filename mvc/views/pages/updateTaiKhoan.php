@@ -12,6 +12,7 @@
 <div class="container mt-5">
     <h2 class="text-center">Sửa Tài Khoản Nhân Viên</h2>
     <?php
+    $listMaNhanVien = json_decode($listMaNhanVien, true);
     $data = json_decode($data["data"], true);
     ?>
     <form action="http://localhost/PHP-MVC-MASTER/TaiKhoanNhanVien/update" method="POST">
@@ -20,14 +21,14 @@
         <div class="mb-3">
             <label for="MaNhanVien" class="form-label">Mã Nhân Viên</label>
             <select class="form-select" id="MaNhanVien" name="MaNhanVien" required>
-                <option value="">Chọn Mã Nhân Viên</option>
-                <?php foreach ($data['listMaNhanVien'] as $nhanVien) : ?>
-                    <option value="<?= $nhanVien['MaNhanVien'] ?>" 
-                        <?= $data[0]['MaNhanVien'] == $nhanVien['MaNhanVien'] ? 'selected' : '' ?>>
-                        <?= $nhanVien['MaNhanVien'] ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
+    <option value="">Chọn Mã Nhân Viên</option>
+    <?php foreach ($data['listMaNhanVien'] as $nhanVien) : ?>
+        <option value="<?= $nhanVien['MaNhanVien'] ?>" 
+            <?= $data[0]['MaNhanVien'] == $nhanVien['MaNhanVien'] ? 'selected' : '' ?>>
+            <?= $nhanVien['MaNhanVien'] ?>
+        </option>
+    <?php endforeach; ?>
+</select>
         </div>
 
         <div class="mb-3">
