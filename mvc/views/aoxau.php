@@ -30,7 +30,7 @@
                     <a href="http://localhost/PHP-MVC-MASTER/Kho/show" class="list-group-item list-group-item-action bg-dark text-white">Quản lý kho</a>
                     <a href="http://localhost/PHP-MVC-MASTER/NhapKho/show" class="list-group-item list-group-item-action bg-dark text-white">Quản lý nhập kho</a>
                     <a href="http://localhost/PHP-MVC-MASTER/DonHangAD/Show" class="list-group-item list-group-item-action bg-dark text-white">Quản lý đơn hàng</a>
-                    <a href="http://localhost/PHP-MVC-MASTER/QuanLyKho/show" class="list-group-item list-group-item-action bg-dark text-white">Quản lý kho</a>
+                    <!-- <a href="http://localhost/PHP-MVC-MASTER/QuanLyKho/show" class="list-group-item list-group-item-action bg-dark text-white">Quản lý kho</a> -->
                     <a href="http://localhost/PHP-MVC-MASTER/DanhMucAD/show" class="list-group-item list-group-item-action bg-dark text-white">Quản lý danh mục sách</a>
                     <a href="http://localhost/PHP-MVC-MASTER/NhaCungCap/show" class="list-group-item list-group-item-action bg-dark text-white">Quản lý nhà cung cấp</a>
                     <a href="http://localhost/PHP-MVC-MASTER/ADKhachHang/show" class="list-group-item list-group-item-action bg-dark text-white">Quản lý Khách Hàng</a>
