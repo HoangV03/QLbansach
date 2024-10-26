@@ -33,6 +33,7 @@
                     <th>Địa Chỉ</th>
                     <th>SDT</th>
                     <th>Email</th>
+                    <th>Chức Năng</th>
                     
                 </tr>
             </thead>
@@ -71,13 +72,13 @@
     <script>
         // Chức năng tìm kiếm
         $(document).ready(function () {
-            $("#searchInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#NhaCungCapTableBody tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#NhaCungCapTableBody tr").filter(function () {
+                $(this).toggle($(this).find('td:nth-child(2)').text().toLowerCase().indexOf(value) > -1)
             });
         });
+    });
     </script>
 </body>
 

@@ -28,7 +28,8 @@
             <thead class="table-dark">
                 <tr>
                     <th>Mã Danh Mục</th>
-                    <th>Tên Danh Mục</th>                    
+                    <th>Tên Danh Mục</th>    
+                    <th>Chức Năng</th>                
                 </tr>
             </thead>
             <tbody id="DanhMucTableBody">
