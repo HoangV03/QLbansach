@@ -94,7 +94,7 @@
 
     function exportData(name, type) {
         // Lấy bảng customers
-        const table = document.getElementById("NhaCungCapTableBody");
+        const table = document.getElementById("NhaCungCapTableBody").parentNode;;
 
         // Loại bỏ cột cuối cùng của bảng
         const rows = table.getElementsByTagName("tr");

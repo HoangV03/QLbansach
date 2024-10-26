@@ -163,13 +163,13 @@ function updateSortArrows(columnIndex) {
 
     function exportData(name, type) {
         // Lấy bảng customers
-        const table = document.getElementById("nhanVienTableBody");
+        const table = document.getElementById("nhanVienTableBody").parentNode;
 
         // Loại bỏ cột cuối cùng của bảng
         const rows = table.getElementsByTagName("tr");
         for (let i = 0; i < rows.length; i++) {
             const row = rows[i];
-            if (row.cells.length > 0) {
+            if (row.cells.length >= 0) {
                 row.deleteCell(row.cells.length - 1); // Loại bỏ ô cuối cùng
             }
         }

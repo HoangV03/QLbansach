@@ -112,7 +112,7 @@
 
     function exportData(name, type) {
         // Lấy bảng customers
-        const table = document.getElementById("sachTableBody");
+        const table = document.getElementById("sachTableBody").parentNode;;
 
         // Loại bỏ cột cuối cùng của bảng
         const rows = table.getElementsByTagName("tr");
