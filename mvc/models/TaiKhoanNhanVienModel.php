@@ -12,6 +12,16 @@ class TaiKhoanNhanVienModel extends DB
         }
         return json_encode($mang);
     }
+    public function getAllMaNhanVien()
+    {
+        $sql = "SELECT MaNhanVien FROM tbl_nhanvien";
+        $result = mysqli_query($this->con, $sql);
+        $mang = array();
+        while ($row = mysqli_fetch_assoc($result)) {
+            $mang[] = $row;
+        }
+        return $mang; // Trả về danh sách Mã Nhân Viên
+    }
 
     // Tạo tài khoản mới
     public function createTaiKhoan($MaTaiKhoan, $MaNhanVien, $TenDangNhap, $MatKhau, $Quyen)

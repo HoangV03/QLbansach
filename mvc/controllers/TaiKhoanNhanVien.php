@@ -58,8 +58,10 @@ class TaiKhoanNhanVien extends Controller
     // Hiển thị form tạo tài khoản mới
     public function FormCreate()
     {
+        $listMaNhanVien = $this->TaiKhoanNhanVienModel->getAllMaNhanVien();
         $this->view("aoxau", [
-            "page" => "createTaiKhoan"
+            "page" => "createTaiKhoan",
+            "listMaNhanVien" => $listMaNhanVien
         ]);
     }
 
@@ -67,9 +69,11 @@ class TaiKhoanNhanVien extends Controller
     public function FormUpdate($id)
     {
         $data = $this->TaiKhoanNhanVienModel->getTaiKhoan($id);
+        $listMaNhanVien = $this->TaiKhoanNhanVienModel->getAllMaNhanVien();
         $this->view("aoxau", [
             "page" => "updateTaiKhoan",
-            "data" => $data
+            "data" => $data,
+            "listMaNhanVien" => $listMaNhanVien
         ]);
     }
 }

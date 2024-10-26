@@ -20,8 +20,15 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="MaNhanVien" class="form-label">Mã Nhân Viên</label>
-                <input type="text" class="form-control" id="MaNhanVien" name="MaNhanVien" required>
+            <label for="MaNhanVien" class="form-label">Mã Nhân Viên</label>
+    <select class="form-select" id="MaNhanVien" name="MaNhanVien" required>
+        <option value="">Chọn Mã Nhân Viên</option>
+        <?php foreach ($data['listMaNhanVien'] as $nhanVien) : ?>
+            <option value="<?= $nhanVien['MaNhanVien'] ?>">
+                <?= $nhanVien['MaNhanVien'] ?>
+            </option>
+        <?php endforeach; ?>
+        </select>
             </div>
             <div class="mb-3">
                 <label for="TenDangNhap" class="form-label">Tên Tài Khoản</label>
