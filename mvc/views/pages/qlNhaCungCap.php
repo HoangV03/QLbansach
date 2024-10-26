@@ -13,18 +13,22 @@
 
     <div class="container mt-5">
         <h2 class="text-center">Bảng Quản Lý Nhà Cung Cấp</h2>
-        
-
-        <!-- Nút Thêm Nhà Cung Cấp -->
-        <div class="text-end mb-3">
-            <a href="http://localhost/PHP-MVC-MASTER/NhaCungCap/FormCreate" class="btn btn-success">Thêm nhà cung cấp</a>
-        </div>
-<!-- Ô tìm kiếm -->
+        <!-- Ô tìm kiếm -->
 <div class="row mb-3">
             <div class="col-md-4">
                 <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm nhà cung cấp...">
             </div>
         </div>
+
+        <!-- Nút Thêm Nhà Cung Cấp -->
+        <div class="text-end mb-3">
+            <a href="http://localhost/PHP-MVC-MASTER/NhaCungCap/FormCreate" class="btn btn-success">Thêm nhà cung cấp</a>
+        </div>
+        <div class="text-end mb-3">
+         <a href='' onclick="xuatexcel()" title='Thêm' class='btn btn-primary'>
+         Xuất Excel</a>
+    </div>
+
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
@@ -80,6 +84,34 @@
         });
     });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script type="text/javascript">
+    function xuatexcel() {
+        var name = prompt("Nhập tên file của bạn", "Tên");
+        exportData(name, '.xlsx');
+
+    }
+
+    function exportData(name, type) {
+        // Lấy bảng customers
+        const table = document.getElementById("NhaCungCapTableBody");
+
+        // Loại bỏ cột cuối cùng của bảng
+        const rows = table.getElementsByTagName("tr");
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            if (row.cells.length > 0) {
+                row.deleteCell(row.cells.length - 1); // Loại bỏ ô cuối cùng
+            }
+        }
+        // Xuất bảng sang Excel
+        const fileName = name + type;
+        const wb = XLSX.utils.table_to_book(table);
+        XLSX.writeFile(wb, fileName);
+    }
+</script>
+
+<script src="live/lib/js/sheet.js"></script>
 </body>
 
 </html>
