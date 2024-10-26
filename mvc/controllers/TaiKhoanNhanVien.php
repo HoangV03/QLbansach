@@ -67,15 +67,11 @@ class TaiKhoanNhanVien extends Controller
 
     // Hiển thị form cập nhật thông tin tài khoản
     public function FormUpdate($id)
-{
-    $listMaNhanVien = $this->TaiKhoanNhanVienModel->getAllMaNhanVien();
-    $data = $this->TaiKhoanNhanVienModel->getTaiKhoan($id);
-    
-    $this->view("aoxau", [
-        "page" => "updateTaiKhoan",
-        "listMaNhanVien" => $listMaNhanVien,
-        "data" => $data
-        
-    ]);
-}
+    {
+        $data = $this->TaiKhoanNhanVienModel->getTaiKhoan($id);
+        $this->view("aoxau", [
+            "page" => "updateTaiKhoan",
+            "data" => $data
+        ]);
+    }
 }
