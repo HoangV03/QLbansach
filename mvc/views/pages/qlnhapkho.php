@@ -32,12 +32,13 @@
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
-                    <th>Mã lô hàng</th>
                     <th>Mã Kho</th>
-                    <th>Số lượng nhâp</th>
+                    <th>Mã sách</th>
+                    <th>Số lượng nhập</th>
                     <th>Mã nhà cung cấp</th>
                     <th>Ngày nhập</th>
                     <th>Đơn giá</th>
+                    <th>Mã nhân viên</th>
                     <th>Thao tác</th>
                 </tr>
             </thead>
@@ -50,15 +51,16 @@
                 if (!empty($data)) {
                     foreach ($data as $item) {
                         echo "<tr>";
-                        echo "<td>" . htmlspecialchars($item['MaLoHang']) . "</td>";
                         echo "<td>" . htmlspecialchars($item['MaKho']) . "</td>";
-                        echo "<td>" . htmlspecialchars($item['SoLuongNhap']) . "</td>";
+                        echo "<td>" . htmlspecialchars($item['MaSach']) . "</td>";
+                        echo "<td>" . htmlspecialchars($item['SoLuong']) . "</td>";
                         echo "<td>" . htmlspecialchars($item['MaNhaCungCap']) . "</td>";
                         echo "<td>" . htmlspecialchars($item['NgayNhap']) . "</td>";
                         echo "<td>" . htmlspecialchars($item['DonGia']) . "</td>";
+                        echo "<td>" . htmlspecialchars($item['MaNhanVien']) . "</td>";
                         echo "<td>";
-                        echo "<a  href='http://localhost/PHP-MVC-MASTER/NhapKho/FormUpdate/" . htmlspecialchars($item['MaLoHang']) . "' class='btn btn-warning btn-sm' id ='btn-edit'>Sửa</a>";
-                        echo "<a href='http://localhost/PHP-MVC-MASTER/NhapKho/delete/" . htmlspecialchars($item['MaLoHang']) . "'id ='btn-delete' class='btn btn-danger btn-sm' onclick='return confirm(\"Bạn có chắc chắn muốn xóa?\")'>Xóa</a>";
+                        echo "<a  href='http://localhost/PHP-MVC-MASTER/NhapKho/FormUpdate/" . htmlspecialchars($item['MaSach']) . "' class='btn btn-warning btn-sm' id ='btn-edit'>Sửa</a>";
+                        echo "<a href='http://localhost/PHP-MVC-MASTER/NhapKho/delete/" . htmlspecialchars($item['MaSach']) . "'id ='btn-delete' class='btn btn-danger btn-sm' onclick='return confirm(\"Bạn có chắc chắn muốn xóa?\")'>Xóa</a>";
                         echo "</td>";
                         echo "</tr>";
                     }

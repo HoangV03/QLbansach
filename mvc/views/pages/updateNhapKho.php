@@ -14,9 +14,9 @@
     <?php
     $data = json_decode($data["data"], true);
     foreach ($data as $row) {
-        $malohang = $row["MaLoHang"];
         $makho = $row["MaKho"];
-        $soluongnhap = $row["SoLuongNhap"];
+        $masach = $row["MaSach"];
+        $soluong = $row["SoLuong"];
         $manhacungcap = $row["MaNhaCungCap"];
         $ngaynhap = $row["NgayNhap"];
         $dongia = $row["DonGia"];
@@ -26,16 +26,16 @@
         <h2 class="mb-4">Sửa thông tin lô hàng</h2>
         <form method="POST" action="http://localhost/PHP-MVC-MASTER/NhapKho/update">
             <div class="mb-3">
-                <label for="MaLoHang" class="form-label">Mã lô hàng</label>
-                <input readonly type="text" class="form-control" name="MaLoHang" value="<?php echo $malohang ?> ">
-            </div>
-            <div class="mb-3">
-                <label for="MaKho" class="form-label">Tên kho</label>
+                <label for="MaKho" class="form-label">Mã kho</label>
                 <input class="form-control" name="MaKho" rows="3" value="<?php echo $makho ?>" placeholder="Nhập mã kho">
             </div>
             <div class="mb-3">
-                <label for="SoLuongNhap" class="form-label"></label>
-                <input type="number" class="form-control" name="SoLuongNhap" value="<?php echo $soluongnhap ?>" placeholder="Nhập số lượng">
+                <label for="MaSach" class="form-label">Mã sách</label>
+                <input  type="text" class="form-control" name="MaSach" value="<?php echo $masach ?> " placeholder="Nhập mã sách">
+            </div>
+            <div class="mb-3">
+                <label for="SoLuong" class="form-label">Số lượng</label>
+                <input type="number" class="form-control" name="SoLuong" value="<?php echo $soluong ?>" placeholder="Nhập số lượng">
             </div>
 
             <div class="mb-3">
